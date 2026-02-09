@@ -1,0 +1,48 @@
+[
+  
+{
+  "name": "premium",
+  "id": 1,
+  "type": "solo",
+  "description": "CsYBot Premium Buy! (10 Days)",
+  "price": 20000,
+  "minlevel": 2
+},
+{
+  "name": "discord-v13-slash-template",
+  "id": 2,
+  "type": "template",
+  "description": "Discord V13 Template Buy (Secret Key)",
+  "price": 10000,
+  "download": "discord-v13-slash-template.zip",
+  "minlevel": 0
+},
+{
+  "name": "discord-v13-artificial-intelligence-template",
+  "id": 3,
+  "type": "template",
+  "description": "Discord V13 Artificial Intelligence Template Buy (Secret Key)",
+  "price": 15000,
+  "download": "discord-v13-artificial-intelligence-template.zip",
+  "minlevel": 1
+},
+{
+  "name": "discord-v13-slash-botlist-template",
+  "id": 4,
+  "type": "template",
+  "description": "Discord V13 Botlist Template Buy (Secret Key)",
+  "price": 20000,
+  "download": "discord-v13-slash-botlist-template.zip",
+  "minlevel": 0
+},
+{
+  "name": "discord-v13-slash-word-game-template",
+  "id": 5,
+  "type": "template",
+  "description": "Discord V13 Word Game Template Buy (Secret Key)",
+  "price": 15000,
+  "download": "discord-v13-slash-word-game-template.zip",
+  "minlevel": 1
+}
+  
+]

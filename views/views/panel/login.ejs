@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- header %>
+</head>
+<body>
+<style>
+.login {
+  width: 340px;
+  position: relative;
+  height: 200px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-sizing: border-box;            
+  border-radius: 1.2rem;
+  text-align: center;
+  justify-content:center;
+  background: #202528;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
+  transition: all 300ms ease;    
+}
+.select-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}  
+  
+.login button {
+  width: 90px;
+  content: '';
+  cursor: pointer;
+  margin: 10px 1px;
+  font-weight: 800;
+  font-size: 11px;
+  text-transform: uppercase;  
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-radius: 1.2rem;
+  background: #2c2f33;
+  padding: 15px 15px;
+  gap: 1rem;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
+  transition: all 300ms ease;
+  color: #ad91ff;
+  margin-top: 5%;
+}
+.login h2 {
+  padding-top: 5%;    
+}
+.toggle {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0); 
+}
+.toggle:before {
+  content: "";
+  position: relative;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 14px;
+  display: block;
+  background: #9A9999;
+  border-radius: 8px;
+  transition: background .2s ease; }
+.toggle span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+  transition: all .2s ease; 
+}
+.toggle span:before {
+  content: "";
+  position: absolute;
+  display: block;
+  margin: -18px;
+  width: 56px;
+  height: 56px;
+  background: rgba(79, 46, 220, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  pointer-events: none; 
+}
+
+#cbx:checked + .toggle:before {
+  background: #947ADA; 
+}
+
+#cbx:checked + .toggle span {
+  background: #4F2EDC;
+  transform: translateX(20px);
+  transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+  box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2); 
+}
+  #cbx:checked + .toggle span:before {
+    transform: scale(1);
+    opacity: 0;
+    transition: all .4s ease; 
+}
+</style>
+
+<script>
+function start() {
+const get = document.getElementById("reload");
+const get2 = document.getElementById("wait");
+const get3 = document.getElementById("top");
+const get4 = document.getElementById("cbx").checked;
+get3.style.paddingTop = "0";
+get2.style.display = "";
+var ok = null;
+  
+document.cookie = `ajs=${get4}`;
+  
+try {
+    let w = 900;
+    let h = 500;
+		const dualScreenLeft = window.screenLeft !==  undefined ? window.screenLeft : window.screenX;
+		const dualScreenTop = window.screenTop !==  undefined   ? window.screenTop  : window.screenY;
+	
+		const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+		const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+	
+		const systemZoom = width / window.screen.availWidth;
+		const left = (width - w) / 2 / systemZoom + dualScreenLeft
+		const top = (height - h) / 2 / systemZoom + dualScreenTop
+		const newWindow = window.open("<%- base %>/login/discord", "CsYBot With Discord", 
+		  `
+		  scrollbars=yes,
+		  width=${w / systemZoom}, 
+		  height=${h / systemZoom}, 
+		  top=${top}, 
+		  left=${left}
+		  `
+		)
+	
+		if (window.focus) newWindow.focus();
+} catch (err) {
+  if(!ok && err) {
+    window.location.href = "<%- base %>/login/discord";
+  }
+}
+var length = 0;
+let interval = setInterval(function() {
+  if(length == 4) {
+    clearInterval(interval);
+    get.style.display = "";
+    get3.style.paddingTop = "";
+    get2.style.display = "none";
+  } else {
+    length++;
+    $.ajax({url:"<%- base %>/api/exists",success: function(data){
+      if(data.code == 0) location.reload();
+    }});   
+  }
+}, 5000);
+}
+  
+</script>
+  
+<div class="select-project">
+<div class="login">
+      <h3 id="wait" style="color: #999999;padding: 0;display: none;">Waiting...</h3>
+      <h2 id="top" style="color: #ad91ff;">Login with Discord</h2>
+      <button onclick='start();'>login</button>
+      <button id="reload" style="display: none;" onclick='location.reload();'>reload</button>
+      <br><br>
+      <center>
+        <input type="checkbox" id="cbx" style="display:none" <%- ajs %>>
+        Auto join servers: <label for="cbx" class="toggle"><span></span></label>
+      </center>
+</div>
+  
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>

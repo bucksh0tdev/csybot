@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <%- header %>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="<%- csybot.config.web.apipath %>/libs/img/logo.png" />
+            <h2>CsYBot</h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp">close</span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="<%- base %>/panel" class="active">
+            <span class="material-icons-sharp">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="<%- base %>/panel/servers" class="active">
+            <span class="material-icons-sharp">dns</span>
+            <h3>Servers</h3>
+          </a>
+          <a href="<%- base %>/panel/smart-chatbot">
+            <span class="material-icons-sharp">smart_toy</span>
+            <h3>Secret Key</h3>
+          </a>
+          <a href="<%- base %>/exit">
+            <span class="material-icons-sharp">logout</span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <!------------------ END OF ASIDE ------------------>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+      
+      <% if(success) { %>
+        <script>swal.fire("<%- success %>", `<%- successdesc %>`, "success");
+        setTimeout(function() {
+          window.location.href = "<%- base %>/panel/admin";
+        }, 5000);
+        </script>
+      <% } %>
+      
+      <script>
+      
+      function reloadAll() {
+        window.location.href = "<%- base %>/panel/admin?code=1";
+      }
+        
+      function reloadWeb() {
+        window.location.href = "<%- base %>/panel/admin?code=2";
+      }
+        
+      function webmaintence() {
+        window.location.href = "<%- base %>/panel/admin?code=3";
+      }
+        
+      function botmaintence() {
+        window.location.href = "<%- base %>/panel/admin?code=4";
+      }
+        
+      function langreload() {
+        window.location.href = "<%- base %>/panel/admin?code=5";
+      }
+        
+      function nodereload() {
+        window.location.href = "<%- base %>/panel/admin?code=6";
+      }
+      </script>
+      
+      
+      <main>
+        <h1>Admin</h1>
+        <div class="date">
+          <input disabled value="<%- csybot.date(); %>" type="date" />
+        </div>
+
+        <div class="recent-orders">
+          <h2>Actions</h2>
+          <div style="width: 330px;height: 330px;background: #202528;display: flex;gap: 1rem;margin-bottom:0.7rem;padding:1.4rem 1.8rem;border-radius:1.2rem;box-shadow:0 2rem 3rem rgba(0, 0, 0, 0.4);transition: all 300ms ease;">
+            <ul>
+              <h2>Reload</h2>
+              <li style="padding-bottom: 12px;">
+                <span onclick="reloadAll();" style="color: purple;cursor:pointer;">[Reload All Nodes]</span>
+              </li>
+              <li style="padding-bottom: 12px;">
+                <span onclick="reloadWeb();" style="color: purple;cursor:pointer;">[Reload Web]</span>
+              </li>
+              <h2>Maintence</h2>
+              <li style="padding-bottom: 12px;">
+                <span onclick="webmaintence();" style="color: purple;cursor:pointer;">[Web Maintence]</span> (<%- csybot.config.maintenance.web %>)
+              </li>
+              <li style="padding-bottom: 12px;">
+                <span onclick="botmaintence();" style="color: purple;cursor:pointer;">[Bot Maintence]</span> (<%- csybot.config.maintenance.bot %>)
+              </li>
+              <h2>Update</h2>
+              <li style="padding-bottom: 12px;">
+                <span onclick="langreload();" style="color: purple;cursor:pointer;">[Lang Files Reload]</span>
+              </li>
+              <li style="padding-bottom: 12px;">
+                <span onclick="nodereload();" style="color: purple;cursor:pointer;">[Node Status]</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </main>
+      <!----------------- END OF MAIN -------------------->
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">menu</span>
+          </button>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b><%- csybot.filter(`${user.username}#${user.discriminator}`); %></b></p>
+                <% if(user.id == csybot.config.ownerid) { %>
+                  <small class="text-muted" style="cursor: pointer;" onclick="window.location.href='<%- base %>/panel/admin'">Admin</small>
+                <% }; %>
+            </div>
+            <div class="profile-photo">
+              <img src="<%- `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` %>" />
+            </div>
+          </div>
+        </div>
+        <!-- END OF TOP -->
+      </div>
+    </div>
+  
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="<%- csybot.config.web.apipath %>/libs/js/panel.js"></script>
+  <%- realfooter %>
+  </body>
+  <%- pwa %>
+</html>

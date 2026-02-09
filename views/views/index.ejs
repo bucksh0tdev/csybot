@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- header %>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img alt="Menu Icon" src="<%- csybot.config.web.apipath %>/libs/img/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" onclick="window.blanker('features')">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" onclick="window.blanker('stats')">Dashboard</a>
+            </li>
+        </ul>
+        <div class="nav-item">
+            <a class="nav-link" href="https://docs.csycraft.com" target="_blank">Documentation</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/premium">premium</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/supporters">supporters</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/invite" target="_blank">invite</a>
+        </div>
+        <% if(!user) { %>
+        <a class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;" href="<%- base %>/login">LOGIN</a>
+        <% } else { %>
+          <style>
+            .avatar {
+              display: block;
+              overflow: hidden;
+              border-radius: 50%;
+              height: 2.4rem;
+              width: 2.4rem;
+            }
+            
+          </style>
+        <a href="<%- base %>/panel"><img class="dropbtn avatar" src="<%- `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` %>" /></a>
+        <% } %>
+    </div>
+</nav>
+<div class="header">
+<div class="heading">
+    <h1 class="display-5 title">It's time to use CsYBot in your server.</h1>
+    <p class="subtitle">CsYBot is a multi-purpose CsYBot ready to skill up and boost up your Discord server<br />Also features auto-moderation, administration, spam protect and much more!</p>
+    <a class="btn btn-primary btn-lg clickable" onclick="window.blanker('invite')">Get started</a>
+    <a class="btn btn-secondary btn-lg" href="<%- base %>/invite" target="_blank" role="button">Add to server</a>
+</div>
+</div>
+<div id="stats" class="statistics">
+    <div class="cards">
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p id="counters" class="card-title" data-count="<%- stats.guilds; %>"></p>
+                <p style="font-weight: bold !important;font-size: 20px !important;">servers</p>
+            </div>
+        </div>
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p id="counters" class="card-title" data-count="<%- stats.users; %>"></p>
+                <p style="font-weight: bold !important;font-size: 20px !important;">users</p>
+            </div>
+        </div>
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p id="counters" class="card-title" data-count="<%- stats.channels; %>"></p>
+                <p style="font-weight: bold !important;font-size: 20px !important;">channels</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page_end">
+    <div id="features" class="start">
+    <div class="card">
+        <h2 class="card-timing">Ultra Speed</h2>
+            <img class="card-image" alt="Speed Img" src="<%- csybot.config.web.apipath %>/libs/img/rabbit.png" width="200">
+            <p class="card-description">We Are Always Fast With Our Superior Featured Virtual Servers!</p>
+    </div>
+    <div class="card">
+        <h2 class="card-timing">Ultra Security</h2>
+        <img class="card-image" alt="Security Img" src="<%- csybot.config.web.apipath %>/libs/img/tiger.png" width="200">
+        <p class="card-description">Always Active And Ready To Provide Security!</p>
+    </div>
+        </div>
+    <div id="invite" class="start">
+        <div class="typing">
+            <div class="title">Ready to try CsYBot?</div>
+            <div class="subtitle">Invite CsYBot and start giving your server cool perks!</div>
+            <br />
+            <a class="btn btn-primary btn-lg" href="<%- base %>/login" target="_blank" role="button">Get started</a>
+        </div>
+</div>
+
+    <div class="footer">
+        <div class="bot-footer">
+            <p><img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png"> | CsYBot</p>
+            Copyright © [bucksh0t] - <%- new Date().getFullYear(); %>
+        </div><br/>
+        <div class="csy">website designed by <a href="https://csycraft.com" target="_blank">CsY</a></div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>

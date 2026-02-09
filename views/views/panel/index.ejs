@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <%- header %>
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="<%- csybot.config.web.apipath %>/libs/img/logo.png" />
+            <h2>CsYBot</h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp">close</span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="<%- base %>/panel" class="active">
+            <span class="material-icons-sharp">grid_view</span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="<%- base %>/panel/servers">
+            <span class="material-icons-sharp">dns</span>
+            <h3>Servers</h3>
+          </a>
+          <a href="<%- base %>/panel/smart-chatbot">
+            <span class="material-icons-sharp">smart_toy</span>
+            <h3>Secret Key</h3>
+          </a>
+          <a href="<%- base %>/exit">
+            <span class="material-icons-sharp">logout</span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <!------------------ END OF ASIDE ------------------>
+      <main>
+        <h1>Dashboard</h1>
+        <div class="date">
+          <input disabled value="<%- csybot.date(); %>" type="date" />
+        </div>
+
+        <div class="insights">
+          <div class="sales">
+            <span class="material-icons-sharp">analytics</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Users</h3>
+                <h1><%- stats.userss; %></h1>
+              </div>
+            </div>
+          </div>
+          <!------------ Servers -------------->
+          <div class="expenses">
+            <span class="material-icons-sharp">bar_chart</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Guilds</h3>
+                <h1><%- stats.guildss; %></h1>
+              </div>
+            </div>
+          </div>
+          <!------------ Channel -------------->
+          <div class="income">
+            <span class="material-icons-sharp">stacked_line_chart</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Total Channels</h3>
+                <h1><%- stats.channelss; %></h1>
+              </div>
+            </div>
+          </div>
+          <!------------ END OF Channel -------------->
+        </div>
+        <!------------ END OF INSIGHTS -------------->
+
+        <div class="recent-orders">
+          <h2>Recent Orders</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Method</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+
+<%- logs %>
+                 
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <!----------------- END OF MAIN -------------------->
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">menu</span>
+          </button>
+          <div class="profile">
+            <div class="info">
+              <p>Hey, <b><%- csybot.filter(`${user.username}#${user.discriminator}`); %></b></p>
+                <% if(user.id == csybot.config.ownerid) { %>
+                  <small class="text-muted" style="cursor: pointer;" onclick="window.location.href='<%- base %>/panel/admin'">Admin</small>
+                <% }; %>
+            </div>
+            <div class="profile-photo">
+              <img src="<%- `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` %>" />
+            </div>
+          </div>
+        </div>
+        <!-- END OF TOP -->
+        <div class="sales-analytics">
+          <h2>Your Features</h2>
+        <% if (features) { %>
+          <div class="item customers">
+            <div class="icon">
+              <span class="material-icons-sharp">person</span>
+            </div>
+            <div class="right">
+              <div class="info">
+                <h3>SOUND CHANCE</h3>
+              </div>
+              <h5 class="success">+35%</h5>
+            </div>
+          </div>
+        <% } else { %>   
+          <div class="item offline">
+            <div class="right">
+              <div class="info">
+                <h3>it will appear here</h3>
+              </div>
+            </div>
+          </div>
+          <% }; %>  
+        </div>
+      </div>
+    </div>
+  
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="<%- csybot.config.web.apipath %>/libs/js/panel.js"></script>
+  <%- realfooter %>
+  </body>
+  <%- pwa %>
+</html>

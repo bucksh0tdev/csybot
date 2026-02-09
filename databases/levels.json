@@ -1,0 +1,32 @@
+[
+  {
+    "level": 0,
+    "price": 0,
+    "daily": 1000
+  },
+  {
+    "level": 1,
+    "price": 5000,
+    "daily": 1500
+  },
+  {
+    "level": 2,
+    "price": 7000,
+    "daily": 2000
+  },
+  {
+    "level": 3,
+    "price": 9000,
+    "daily": 2500
+  },
+  {
+    "level": 4,
+    "price": 11000,
+    "daily": 3000
+  },
+  {
+    "level": 5,
+    "price": 13000,
+    "daily": 3500
+  }
+]

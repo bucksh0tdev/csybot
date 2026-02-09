@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- header %>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img alt="Menu Icon" src="<%- csybot.config.web.apipath %>/libs/img/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="<%- base %>">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" href="<%- base %>/#features">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" href="<%- base %>/#stats">Dashboard</a>
+            </li>
+        </ul>
+        <div class="nav-item">
+            <a class="nav-link" href="https://docs.csycraft.com" target="_blank">Documentation</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/premium">premium</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/supporters">supporters</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/invite" target="_blank">invite</a>
+        </div>
+        <% if(!user) { %>
+        <a class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;" href="<%- base %>/login">LOGIN</a>
+        <% } else { %>
+          <style>
+            .avatar {
+              display: block;
+              overflow: hidden;
+              border-radius: 50%;
+              height: 2.4rem;
+              width: 2.4rem;
+            }
+            
+          </style>
+        <a href="<%- base %>/panel"><img class="dropbtn avatar" src="<%- `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` %>" /></a>
+        <% } %>
+    </div>
+</nav>
+  
+<style>
+  
+
+
+.container{
+    margin-top: 15px;
+    align-items: center;
+}
+.container .three {
+    width: calc(950px / 3);
+    margin:0 auto 0 auto;
+	display:table;
+    background-color: #1d1e21;
+    border-radius: 7px;
+    
+}
+.container  header{
+    padding: 20px;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 45px;
+    color: #ad91ff;
+}
+.container  span{
+    font-size: 30px;
+    position: relative;
+    top: -13px;
+}
+.container .basic{
+    width: 120px;
+    background: #1d1e50;
+    color: white;
+    padding: 10px;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: -8px;
+}
+.container .basic::before{
+    content: "";
+    position: absolute;
+    border-width: 4px;
+    border-style: solid;
+    border-color: transparent #10AA8C #10AA8C transparent;
+    left: 0px;
+    top: -8px;
+}
+.container .content{
+    margin-top: 30px;
+    text-align: center;
+    color: #35354A;
+}
+.container .content p:first-child{
+    line-height: 2.3;
+}
+.container .send{
+    text-align: center;
+}
+.container .send button{
+    border: none;
+    background-color: #3d2e50;
+    padding: 15px 25px;
+    cursor: pointer;
+    color: white;
+    background-color: #13C8A6;
+    display: inline-block;
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-family: "work sans",sans-serif;
+    font-size: 15px;
+}
+.container .three{
+    position: relative;
+}
+.container .three .basic{
+    background-color: #555FAE;
+}
+.container .three .basic::before{
+    content: "";
+    border-color: transparent #4854A7 #4854A7 transparent;
+}
+.container .three .send button{
+    background-color: #555FAE;
+}
+</style>
+  
+
+<div class="page_end">
+    <div id="features" class="start">
+
+    <div class="container">
+        <div class="three">
+            <header><span>₺</span>10</header>
+            <div class="basic">Premium</div>
+            <div class="content">
+                <p>Hemen Destek</p>
+                <p>Spam Koruması</p>
+                <p>Ultra topluluk koruması</p>
+                <p>Tepki Rol Ek Limit</p>
+                <p>Özel Destekçi rolü</p>
+                <p style="color: purple;font-size: 30px;">3 Ay</p>
+            </div>
+            <div class="send">
+                <button onclick="window.location.href = 'https://csybot.csycraft.com/premium'">Satın Al</button>
+            </div>
+          </div>
+    </div>
+      
+      
+        </div>
+    <div id="invite" class="start">
+        <div class="typing">
+            <div class="title">Ready to try Bot?</div>
+            <div class="subtitle">Invite Bot and start giving your server cool perks!</div>
+            <br />
+            <a class="btn btn-primary btn-lg" href="login" target="_blank" role="button">Get started</a>
+        </div>
+</div>
+
+    <div class="footer">
+        <div class="bot-footer">
+            <p><img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png"> | CsYBot</p>
+            Copyright © [bucksh0t] - <%- new Date().getFullYear(); %>
+        </div><br/>
+        <div class="csy">website designed by <a href="https://csycraft.com" target="_blank">CsY</a></div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>

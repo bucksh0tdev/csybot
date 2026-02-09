@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- header %>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img alt="Menu Icon" src="<%- csybot.config.web.apipath %>/libs/img/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="<%- base %>">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" href="<%- base %>/#features">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link clickable" href="<%- base %>/#stats">Dashboard</a>
+            </li>
+        </ul>
+        <div class="nav-item">
+            <a class="nav-link" href="https://docs.csycraft.com" target="_blank">Documentation</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/premium">premium</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/supporters">supporters</a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="<%- base %>/invite" target="_blank">invite</a>
+        </div>
+        <% if(!user) { %>
+        <a class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;" href="<%- base %>/login">LOGIN</a>
+        <% } else { %>
+          <style>
+            .avatar {
+              display: block;
+              overflow: hidden;
+              border-radius: 50%;
+              height: 2.4rem;
+              width: 2.4rem;
+            }
+            
+          </style>
+        <a href="<%- base %>/panel"><img class="dropbtn avatar" src="<%- `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png` %>" /></a>
+        <% } %>
+    </div>
+</nav>
+<div class="header">
+<div class="heading">
+    <h1 class="display-5 title">Do you want to support CsYBot</h1>
+    <p class="subtitle">Supporting CsYBot can earn you something special! If you want your name to appear below,<br> support now!</p>
+    <a class="btn btn-primary btn-lg clickable" href="<%- rbase %>/vote">Support</a>
+    <a class="btn btn-secondary btn-lg" href="invite" target="_blank" role="button">Add to server</a>
+</div>
+</div>
+<div class="page_end">
+    <div id="features" class="start">
+    <div class="card">
+    
+      <style>
+        #textarea ul li {
+          font-weight: 800;
+          color: orange;
+          font-stretch: expanded;
+        }
+      
+      </style>
+      
+      
+      <div id="textarea" style="scroll-behavior: smooth;overflow: hidden;height: 150px;border: none; background: transparent;width: 100%;text-align: center;resize: none;font-weight: 500;font-style: inherit;font-family: inherit;font-size: 100%;vertical-align: baseline;line-height: 30px;" disabled>
+        <ul id="supporters">
+          <% voters.forEach((x, index) => { %>
+            <li><a style="color: #cd5555;"><%- `${index + 1}. ` %></a><%- `${csybot.filter(x.username)}` %> <span style="color: #ad91ff;">(<%- `${csybot.filter(x.count)}` %>)</span></li>
+          <% }) %>
+          
+        </ul>
+      </div>
+    </div>
+        </div>
+    <div id="invite" class="start">
+        <div class="typing">
+            <div class="title">Ready to try Bot?</div>
+            <div class="subtitle">Invite Bot and start giving your server cool perks!</div>
+            <br />
+            <a class="btn btn-primary btn-lg" href="login" target="_blank" role="button">Get started</a>
+        </div>
+</div>
+
+    <div class="footer">
+        <div class="bot-footer">
+            <p><img class="logo" alt="Logo" src="<%- csybot.config.web.apipath %>/libs/img/logo.png"> | CsYBot</p>
+            Copyright © [bucksh0t] - <%- new Date().getFullYear(); %>
+        </div><br/>
+        <div class="csy">website designed by <a href="https://csycraft.com" target="_blank">CsY</a></div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+  
+      <script>
+        
+
+        
+$(document).ready(function() {
+    const counters = document.getElementById("textarea");
+    const supporters = document.getElementById("supporters");
+    
+    let count = 0;
+    let interval = setInterval(function() {
+      if(count >= (supporters.offsetHeight - 140)) {
+        counters.style.overflowY = "scroll";
+        clearinterval(interval);
+        return;
+        }
+       counters.scrollTop = count;
+        count += 20;
+    }, 500)
+    
+  
+  
+});
+        
+      </script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- header %>
+</head>
+<body>
+  
+<div class="select-project">
+    <center>
+      <h3 id="msg" style="color: #ad91ff;">Hello, <%- usertag %></h2>
+      <br>
+      <br>
+      <form action='' name="form" method="post">
+        <div id="g-recaptcha"></div>
+      </form>
+    </center>
+</div>
+  
+<script>
+
+function reCaptchaCallback() {
+  grecaptcha.render('g-recaptcha', {
+    'sitekey': "<%- csybot.config.google.recaptcha.publickey %>",
+    'callback': () => {
+      document.forms['form'].submit();
+    }
+  });
+}
+  
+</script>
+  
+<%- footerdesing %>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=reCaptchaCallback&render=explicit"></script>    
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>

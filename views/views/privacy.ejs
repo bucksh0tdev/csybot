@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- header %>
+</head>
+<body style="color: #ad91ff;background-color: #1d1e28;">
+    
+<h3>Toplanan Kişisel Verileriniz, Toplanma Yöntemi ve Hukuki Sebebi</h3>
+<h6>Mesaj yazılan sunucunun; ID, kanalları, kanal ID bilgileri, kanal isimleri, kanal yetkileri, kanal açıklamaları, rolleri, rol ID bilgileri, rol isimleri, rol yetkileri, emojileri, emoji ID bilgileri, emoji isimleri, emoji uzantıları
+
+Botu kullanan kullanıcının; ID, kullanıcı adı, hesap oluşturma tarihi, profil fotoğraf uzantısı, profil banner uzantısı, sahip olduğu rozetler, presence datası,
+
+Siteye giren kullanıcını IP adresi, tarayıcı bilgileri,
+
+depolanarak ve güncellenerek, aramızdaki hizmet ve sözleşme ilişkisi çerçevesinde ve süresince, meşru menfaat işleme şartına dayanılarak işlenecektir.</h6>
+
+<h3>Kişisel Verilerinizin İşlenme Amacı</h3>
+<h6>Bizimle paylaştığınız kişisel verileriniz sadece analiz yapmak suretiyle; sunduğumuz hizmetlerin gerekliliklerini en iyi şekilde yerine getirebilmek, bu hizmetlere sizin tarafınızdan ulaşılabilmesini ve maksiumum düzeyde faydalanılabilmesini sağlamak, hizmetlerimizi, ihtiyaçlarınız doğrultusunda geliştirebilmek ve sizleri daha geniş kapsamlı hizmet sağlayıcıları ile yasal çerçeveler içerisinde buluşturabilmek ve kanundan doğan zorunlulukların (kişisel verilerin talep halinde adli ve idari makamlarla paylaşılması) yerine getirilebilmesi amacıyla, sözleşme ve hizmet süresince, amacına uygun ve ölçülü bir şekilde işlenecek ve güncellenecektir.</h6>
+    
+<h3>Toplanan Kişisel Verilerin Kimlere ve Hangi Amaçlarla Aktarılabileceği</h3>
+<h6>Bizimle paylaştığınız kişisel verileriniz; faaliyetlerimizi yürütmek üzere hizmet aldığımız ve/veya verdiğimiz, sözleşmesel ilişki içerisinde bulunduğumuz,iş birliği yaptığımız, yurt içi ve yurt dışındaki 3. şahıslar ile kurum ve kuruluşlara ve talep halinde adli ve idari makamlara, gerekli teknik ve idari önlemler alınması koşulu ile aktarılabilecektir.</h6>
+
+<h3>Kişisel Verileri İşlenen Kişi Olarak Haklarınız</h3>
+<h6>KVKK madde 11 uyarınca herkes, veri sorumlusuna başvurarak aşağıdaki haklarını kullanabilir:
+
+Kişisel veri işlenip işlenmediğini öğrenme,
+Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,
+Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,
+Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,
+Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme,
+Kişisel verilerin silinmesini veya yok edilmesini isteme,
+(e) ve (f) bentleri uyarınca yapılan işlemlerin, kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,
+İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme,
+Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme, haklarına sahiptir.
+Yukarıda sayılan haklarınızı kullanmak üzere <%- `${csybot.config.email}` %> üzerinden bizimle iletişime geçebilirsiniz.</h6>
+  
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="<%- csybot.config.web.apipath %>/libs/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%- realfooter %>
+</body>
+<%- pwa %>
+</html>
